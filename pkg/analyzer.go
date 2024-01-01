@@ -113,9 +113,9 @@ func run(pass *analysis.Pass) (interface{}, error) {
 
 		for chName, info := range channelsWithoutDirection {
 			if info.isSendOnly() {
-				pass.Reportf(info.tokenPos, "Function `%s` uses channel `%s` as send-only, consider `func %s(%s chan<- T`", funcDecl.Name.Name, chName, funcDecl.Name.Name, chName)
+				pass.Reportf(info.tokenPos, "Function `%s` uses channel `%s` as send-only, consider `func %s(%s chan<- T...`", funcDecl.Name.Name, chName, funcDecl.Name.Name, chName)
 			} else if info.isReceiveOnly() {
-				pass.Reportf(info.tokenPos, "Function `%s` uses channel `%s` as receive-only, consider `func %s(%s <-chan T`", funcDecl.Name.Name, chName, funcDecl.Name.Name, chName)
+				pass.Reportf(info.tokenPos, "Function `%s` uses channel `%s` as receive-only, consider `func %s(%s <-chan T...`", funcDecl.Name.Name, chName, funcDecl.Name.Name, chName)
 			}
 		}
 		return
